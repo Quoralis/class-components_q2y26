@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import mdx from "@mdx-js/rollup";
 import babel from "@rolldown/plugin-babel";
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [
@@ -14,6 +14,6 @@ export default defineConfig({
     babel({
       presets: [reactCompilerPreset()],
     }),
-    tailwindcss()
+    tailwindcss(),
   ],
 });

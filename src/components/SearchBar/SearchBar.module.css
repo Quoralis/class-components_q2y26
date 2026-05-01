@@ -1,0 +1,32 @@
+.searchWrapper {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+}
+
+.searchInput {
+	flex: 1;
+	max-width: 500px;
+	background-color: #202329;
+	border-radius: 8px;
+	border: 1px solid #333;
+	color: #f5f5f5;
+	padding: 5px 5px;
+	font-size: 1em;
+	outline: none;
+}
+
+.searchInput::placeholder {
+	color: #707070;
+}
+
+.searchButton {
+	background: #3c3e44;
+	border: 1px solid #333;
+	color: #fff;
+	padding: 5px 5px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-family: 'Roboto', sans-serif;
+}
