@@ -1,7 +1,7 @@
-import { Component } from 'react';
-import styles from './header.module.css';
-import logoImg from '../../assets/logo.png';
-import SearchBar from '../SearchBar/SearchBar';
+import { Component } from "react";
+import styles from "./header.module.css";
+import logoImg from "../../assets/logo.png";
+import SearchBar from "../SearchBar/SearchBar";
 
 class Header extends Component {
   render() {
