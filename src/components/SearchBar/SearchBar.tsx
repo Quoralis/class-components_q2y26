@@ -1,25 +1,27 @@
-import { type ChangeEvent, Component } from 'react';
-import styles from './searchBar.module.css';
+import { type ChangeEvent, Component } from "react";
+import styles from "./searchBar.module.css";
+import type { HeaderProps } from "../../types/search";
 
-class SearchBar extends Component {
+class SearchBar extends Component<HeaderProps> {
   state = {
-    searchTerm: localStorage.getItem('searchTerm') ?? '',
+    searchTerm: localStorage.getItem("searchTerm") ?? "",
   };
 
   handleSearch = () => {
-    localStorage.setItem('searchTerm', this.state.searchTerm);
+    localStorage.setItem("searchTerm", this.state.searchTerm);
+    this.props.onSearch(this.state.searchTerm).catch((err) => {
+      console.log("Error fetch", err);
+    });
   };
 
   handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({ searchTerm: e.target.value });
-    console.log(this.state.searchTerm);
   };
 
   handleClear = () => {
-    this.setState({ searchTerm: '' });
-    localStorage.removeItem('searchTerm');
+    this.setState({ searchTerm: "" });
+    localStorage.removeItem("searchTerm");
   };
-
 
   render() {
     return (
@@ -32,10 +34,14 @@ class SearchBar extends Component {
             placeholder="Search characters..."
             value={this.state.searchTerm}
           />
-          <button className={styles.clearButton} onClick={this.handleClear}>x</button>
+          <button className={styles.clearButton} onClick={this.handleClear}>
+            x
+          </button>
         </div>
 
-        <button onClick={this.handleSearch} className={styles.searchButton}>Search</button>
+        <button onClick={this.handleSearch} className={styles.searchButton}>
+          Search
+        </button>
       </div>
     );
   }

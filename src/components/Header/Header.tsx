@@ -2,8 +2,9 @@ import { Component } from "react";
 import styles from "./header.module.css";
 import logoImg from "../../assets/logo.png";
 import SearchBar from "../SearchBar/SearchBar";
+import type { HeaderProps } from "../../types/search";
 
-class Header extends Component {
+class Header extends Component<HeaderProps> {
   render() {
     return (
       <header className={styles.header}>
@@ -24,7 +25,7 @@ class Header extends Component {
         </nav>
 
         <div className={styles.searchRow}>
-          <SearchBar />
+          <SearchBar onSearch={this.props.onSearch} />
         </div>
       </header>
     );
