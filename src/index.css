@@ -1,2 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Frijole&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import "tailwindcss";
+
+body {
+	background-color: #000000;
+	color: #ffffff;
+	margin: 0;
+	min-height: 100vh;
+}
+
+* {
+	font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+}
+

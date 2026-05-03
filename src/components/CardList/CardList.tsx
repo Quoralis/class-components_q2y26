@@ -1,6 +1,7 @@
 import { Component } from "react";
 import CharacterCard from "./CharacterCard/CharacterCard";
 import type { Character } from "../../types/characters";
+import styles from "./cardList.module.css";
 
 interface CardListProps {
   characters: Character[];
@@ -11,13 +12,13 @@ class CardList extends Component<CardListProps> {
     const { characters } = this.props;
 
     return (
-      <section>
+      <section className={styles.results__container}>
         {characters.length > 0 &&
           characters.map((character) => (
             <CharacterCard key={character.id} character={character} />
           ))}
 
-        {characters.length === 0 && <p>No results found</p>}
+        {characters.length === 0 && <p className={styles.noResults}>No results found</p>}
       </section>
     );
   }
