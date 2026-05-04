@@ -17,10 +17,6 @@ class CardList extends Component<CardListProps> {
           characters.map((character) => (
             <CharacterCard key={character.id} character={character} />
           ))}
-
-        {characters.length === 0 && (
-          <p className={styles.noResults}>No results found</p>
-        )}
       </section>
     );
   }

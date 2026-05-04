@@ -14,9 +14,7 @@ class SearchBar extends Component<HeaderProps> {
       return console.log("Search term is the same as last search term");
     localStorage.setItem("searchTerm", currentSearchTerm);
 
-    this.props.onSearch(currentSearchTerm).catch((err) => {
-      console.log("Error fetch", err);
-    });
+    this.props.onSearch(currentSearchTerm).catch(() => null);
   };
 
   handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,10 +23,8 @@ class SearchBar extends Component<HeaderProps> {
 
   handleClear = () => {
     this.setState({ searchTerm: "" });
-    localStorage.setItem("searchTerm",'');
-    this.props.onSearch('').catch((err) => {
-      console.log("Error fetch", err);
-    });
+    localStorage.setItem("searchTerm", "");
+    this.props.onSearch("").catch(() =>null);
   };
 
   render() {

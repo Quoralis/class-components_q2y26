@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import styles from './Loader.module.css';
+import { Component } from "react";
+import styles from "./Loader.module.css";
 
 class Loader extends Component {
   render() {

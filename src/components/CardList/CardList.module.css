@@ -5,11 +5,3 @@
   width: 100%;
   padding: 20px;
 }
-
-.noResults {
-  text-align: center;
-  grid-column: 1 / -1;
-  font-size: 1.5rem;
-  color: #888;
-  margin-top: 50px;
-}
