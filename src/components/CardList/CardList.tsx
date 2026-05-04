@@ -18,7 +18,9 @@ class CardList extends Component<CardListProps> {
             <CharacterCard key={character.id} character={character} />
           ))}
 
-        {characters.length === 0 && <p className={styles.noResults}>No results found</p>}
+        {characters.length === 0 && (
+          <p className={styles.noResults}>No results found</p>
+        )}
       </section>
     );
   }
