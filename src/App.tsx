@@ -4,11 +4,13 @@ import Header from "./components/Header/Header";
 import CardList from "./components/CardList/CardList";
 import type { ApiResponse } from "./types/characters";
 import type { AppState } from "./types/search";
+import Loader from './components/Loader/Loader';
 
 class App extends Component<object, AppState> {
   state: AppState = {
     characters: [],
-    lastSearch: "",
+    lastSearch: null,
+    isLoading: true
   };
 
   fetchData = (name = "") => {
@@ -22,11 +24,12 @@ class App extends Component<object, AppState> {
         this.setState({
           characters: data.results || [],
           lastSearch: clearedName,
+          isLoading: false
         });
       })
       .catch((err) => {
         console.log("Fetch error:", err);
-        this.setState({ characters: [], lastSearch: clearedName });
+        this.setState({ characters: [], lastSearch: clearedName, isLoading: false });
       });
   };
 
@@ -38,11 +41,12 @@ class App extends Component<object, AppState> {
   }
 
   render() {
+    const { isLoading, characters } = this.state;
     return (
       <div className={styles.app__container}>
         <Header onSearch={this.fetchData} />
 
-        <CardList characters={this.state.characters} />
+        {isLoading ? <Loader/> : <CardList characters={characters} />}
       </div>
     );
   }
