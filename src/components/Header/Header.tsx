@@ -5,7 +5,18 @@ import SearchBar from "../SearchBar/SearchBar";
 import type { HeaderProps } from "../../types/search";
 
 class Header extends Component<HeaderProps> {
+  state  = {
+    testError: false
+  }
+
+  testError = () => {
+    this.setState({testError: true})
+  }
+
   render() {
+    if(this.state.testError) throw new Error(
+      "Something went wrong"
+    )
     return (
       <header className={styles.header}>
         <div className={styles.logo}>
@@ -26,6 +37,17 @@ class Header extends Component<HeaderProps> {
 
         <div className={styles.searchRow}>
           <SearchBar onSearch={this.props.onSearch} />
+        </div>
+        <div>
+          <div className={styles.crash__container}>
+            <button
+              className={styles.crash__button}
+              onClick={this.testError}
+              title="Simulate Application Crash"
+            >
+              Crash App
+            </button>
+          </div>
         </div>
       </header>
     );
