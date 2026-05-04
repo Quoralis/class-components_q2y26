@@ -8,8 +8,14 @@ class SearchBar extends Component<HeaderProps> {
   };
 
   handleSearch = () => {
-    localStorage.setItem("searchTerm", this.state.searchTerm);
-    this.props.onSearch(this.state.searchTerm).catch((err) => {
+    const currentSearchTerm = this.state.searchTerm;
+    const lastSearchTerm = localStorage.getItem("searchTerm") ?? "";
+    if(currentSearchTerm === lastSearchTerm) return (
+      console.log("Search term is the same as last search term")
+    )
+    localStorage.setItem("searchTerm", currentSearchTerm);
+
+    this.props.onSearch(currentSearchTerm).catch((err) => {
       console.log("Error fetch", err);
     });
   };
