@@ -1,5 +1,5 @@
 import { type ChangeEvent, Component } from "react";
-import styles from "./searchBar.module.css";
+import styles from "./SearchBar.module.css";
 import type { HeaderProps } from "../../types/search";
 
 class SearchBar extends Component<HeaderProps> {

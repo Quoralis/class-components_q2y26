@@ -1,5 +1,5 @@
 import { Component } from "react";
-import styles from "./header.module.css";
+import styles from "./Header.module.css";
 import logoImg from "../../assets/logo.png";
 import SearchBar from "../SearchBar/SearchBar";
 import type { HeaderProps } from "../../types/search";

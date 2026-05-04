@@ -1,5 +1,5 @@
 import { Component } from "react";
-import styles from "./characterCard.module.css";
+import styles from "./CharacterCard.module.css";
 import type { Character } from "../../../types/characters";
 
 interface CharacterCardProps {

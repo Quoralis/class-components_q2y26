@@ -1,7 +1,7 @@
 import { Component } from "react";
 import CharacterCard from "./CharacterCard/CharacterCard";
 import type { Character } from "../../types/characters";
-import styles from "./cardList.module.css";
+import styles from "./CardList.module.css";
 
 interface CardListProps {
   characters: Character[];
