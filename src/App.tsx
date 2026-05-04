@@ -1,11 +1,11 @@
-import { Component } from 'react';
-import styles from './App.module.css';
-import Header from './components/Header/Header';
-import CardList from './components/CardList/CardList';
-import type { ApiResponse } from './types/characters';
-import type { AppState } from './types/search';
-import Loader from './components/Loader/Loader';
-import ErrorMessage from './components/ErrorMessage/ErrorMessage';
+import { Component } from "react";
+import styles from "./App.module.css";
+import Header from "./components/Header/Header";
+import CardList from "./components/CardList/CardList";
+import type { ApiResponse } from "./types/characters";
+import type { AppState } from "./types/search";
+import Loader from "./components/Loader/Loader";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 
 class App extends Component<object, AppState> {
   state: AppState = {
@@ -15,18 +15,23 @@ class App extends Component<object, AppState> {
     error: null,
   };
 
-  fetchData = (name = '') => {
+  fetchData = (name = "") => {
     const clearedName = name.trim();
-    const url = new URL('https://rickandmortyapi.com/api/character');
-    url.searchParams.set('name', clearedName);
+    const url = new URL("https://rickandmortyapi.com/api/character");
+    localStorage.setItem("searchTerm", clearedName);
+    url.searchParams.set("name", clearedName);
+
     if (this.state.lastSearch === clearedName) return Promise.resolve();
     this.setState({ isLoading: true, error: null });
 
     return fetch(url.toString())
       .then((res) => {
-        if(res.ok) return  res.json();
-        throw new Error(res.status === 404 ? 'Not found characters' : 'Something went wrong with the server');
-
+        if (res.ok) return res.json();
+        throw new Error(
+          res.status === 404
+            ? "Not found characters"
+            : "Something went wrong with the server",
+        );
       })
       .then((data: ApiResponse) => {
         this.setState({
@@ -40,7 +45,7 @@ class App extends Component<object, AppState> {
           characters: [],
           lastSearch: clearedName,
           isLoading: false,
-          error: (err as Error).message
+          error: (err as Error).message,
         });
       });
   };
@@ -54,7 +59,7 @@ class App extends Component<object, AppState> {
   };
 
   componentDidMount() {
-    const savedSearchTerm = localStorage.getItem('searchTerm') ?? '';
+    const savedSearchTerm = localStorage.getItem("searchTerm") ?? "";
     this.fetchData(savedSearchTerm).catch(() => null);
   }
 
