@@ -5,18 +5,16 @@ import SearchBar from "../SearchBar/SearchBar";
 import type { HeaderProps } from "../../types/search";
 
 class Header extends Component<HeaderProps> {
-  state  = {
-    testError: false
-  }
+  state = {
+    testError: false,
+  };
 
   testError = () => {
-    this.setState({testError: true})
-  }
+    this.setState({ testError: true });
+  };
 
   render() {
-    if(this.state.testError) throw new Error(
-      "Something went wrong"
-    )
+    if (this.state.testError) throw new Error("Something went wrong");
     return (
       <header className={styles.header}>
         <div className={styles.logo}>

@@ -1,5 +1,5 @@
-import { Component, type ErrorInfo, type ReactNode } from 'react';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { Component, type ErrorInfo, type ReactNode } from "react";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 interface Props {
   children: ReactNode;
@@ -23,13 +23,9 @@ class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '40px', textAlign: 'center' }}>
-          <ErrorMessage message={'Error boundary caught an error.'} />
-          <button
-            onClick={() => window.location.reload()}
-          >
-            Refresh Page
-          </button>
+        <div style={{ padding: "40px", textAlign: "center" }}>
+          <ErrorMessage message={"Error boundary caught an error."} />
+          <button onClick={() => window.location.reload()}>Refresh Page</button>
         </div>
       );
     }
