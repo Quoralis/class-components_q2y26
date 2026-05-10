@@ -38,6 +38,6 @@ export default defineConfig({
       },
       reporter: ["text", "json", "html"],
     },
-    setupFiles: './src/setupTests.ts',
+    setupFiles: "./src/setupTests.ts",
   },
 });
