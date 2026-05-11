@@ -25,11 +25,15 @@ describe("Header", () => {
   test("renders Crash App button", () => {
     render(<Header onSearch={mockOnSearch} />);
 
-    expect(screen.getByRole("button", { name: "Crash App" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Crash App" }),
+    ).toBeInTheDocument();
   });
 
   test("throws error when Crash App is clicked", () => {
-    const consoleError = vi.spyOn(console, "error").mockImplementation(() => null);
+    const consoleError = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => null);
 
     render(<Header onSearch={mockOnSearch} />);
 
