@@ -21,7 +21,7 @@ describe("ErrorBoundary", () => {
     render(
       <ErrorBoundary>
         <NormalComponent />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
 
     expect(screen.getByText("All good")).toBeInTheDocument();
@@ -31,18 +31,22 @@ describe("ErrorBoundary", () => {
     render(
       <ErrorBoundary>
         <CrashComponent />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
 
-    expect(screen.getByText("Error boundary caught an error.")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Refresh Page" })).toBeInTheDocument();
+    expect(
+      screen.getByText("Error boundary caught an error."),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Refresh Page" }),
+    ).toBeInTheDocument();
   });
 
   test("calls console.error when child throws", () => {
     render(
       <ErrorBoundary>
         <CrashComponent />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
 
     expect(console.error).toHaveBeenCalled();
