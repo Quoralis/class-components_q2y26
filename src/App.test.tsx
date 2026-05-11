@@ -45,7 +45,7 @@ describe("App", () => {
       vi.fn().mockResolvedValue({
         ok: true,
         json: () => Promise.resolve(mockApiResponse),
-      })
+      }),
     );
     localStorage.clear();
   });
@@ -73,9 +73,7 @@ describe("App", () => {
     render(<App />);
 
     await waitFor(() => {
-      expect(fetch).toHaveBeenCalledWith(
-        expect.stringContaining("name=Rick")
-      );
+      expect(fetch).toHaveBeenCalledWith(expect.stringContaining("name=Rick"));
     });
   });
 
@@ -83,9 +81,7 @@ describe("App", () => {
     render(<App />);
 
     await waitFor(() => {
-      expect(fetch).toHaveBeenCalledWith(
-        expect.stringContaining("name=")
-      );
+      expect(fetch).toHaveBeenCalledWith(expect.stringContaining("name="));
     });
   });
 
@@ -104,7 +100,7 @@ describe("App", () => {
       vi.fn().mockResolvedValue({
         ok: false,
         status: 404,
-      })
+      }),
     );
 
     render(<App />);
@@ -120,14 +116,14 @@ describe("App", () => {
       vi.fn().mockResolvedValue({
         ok: false,
         status: 500,
-      })
+      }),
     );
 
     render(<App />);
 
     await waitFor(() => {
       expect(
-        screen.getByText("Something went wrong with the server")
+        screen.getByText("Something went wrong with the server"),
       ).toBeInTheDocument();
     });
   });
@@ -137,9 +133,8 @@ describe("App", () => {
       "fetch",
       vi.fn().mockResolvedValue({
         ok: true,
-        json: () =>
-          Promise.resolve({ info: {}, results: [] }),
-      })
+        json: () => Promise.resolve({ info: {}, results: [] }),
+      }),
     );
 
     render(<App />);
