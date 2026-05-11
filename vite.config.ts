@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import mdx from "@mdx-js/rollup";
 import babel from "@rolldown/plugin-babel";
@@ -16,4 +16,30 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.{js,jsx,ts,tsx}"],
+      exclude: [
+        "src/**/*.test.{js,jsx,ts,tsx}",
+        "src/**/*.spec.{js,jsx,ts,tsx}",
+        "src/index.{js,jsx,ts,tsx}",
+        "src/setupTests.{js,ts}",
+        "src/**/*.d.ts",
+        "**/*.module.css",
+        "src/main.{js,jsx,ts,tsx}",
+        "src/types/**"
+      ],
+      thresholds: {
+        statements: 80,
+        branches: 50,
+        functions: 50,
+        lines: 50,
+      },
+      reporter: ["text", "json", "html"],
+    },
+    setupFiles: "./src/setupTests.ts",
+  },
 });
